@@ -1,5 +1,5 @@
 :root {
-  --mainBg: rgb(41, 109, 192);
+  --mainBg: rgb(79, 144, 224);
 }
 body {
   background: var(--mainBg);

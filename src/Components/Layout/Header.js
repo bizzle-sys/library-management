@@ -17,7 +17,7 @@ export const Header = () => {
             <Link className="nav-link" to="/signin">
               <SlLogin className="fs-1" /> Sign In
             </Link>
-            <Link className="nav-link" to="signup">
+            <Link className="nav-link" to="/signup">
               <GiArchiveRegister className="fs-1" /> Sign Up
             </Link>
           </Nav>
