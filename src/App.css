@@ -1,0 +1,26 @@
+:root {
+  --mainBg: rgb(41, 109, 192);
+}
+body {
+  background: var(--mainBg);
+}
+.main {
+  min-height: 80vh;
+}
+.navbar-brand {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--mainBg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar-brand a {
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+}
+.nav-link {
+  color: white;
+}
