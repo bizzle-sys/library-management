@@ -5,6 +5,7 @@ import { Button, Container, Form } from "react-bootstrap";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../../Config/Firebase-config/firebase-config";
 import { toast } from "react-toastify";
+import { doc, setDoc } from "firebase/firestore";
 
 const Signup = () => {
   const [form, setForm] = useState({});
@@ -13,34 +14,44 @@ const Signup = () => {
     setForm({ ...form, [name]: value });
   };
   const handleOnSubmit = async (e) => {
-    e.preventDefault();
-    console.log(form);
+    try {
+      e.preventDefault();
+      console.log(form);
 
-    const { confirmPassword, password, email } = form;
-    if (confirmPassword !== password)
-      return toast.error("password do not match");
-    const pendingUser = createUserWithEmailAndPassword(auth, email, password);
-    toast.promise(pendingUser, {
-      pending: "Please Wait....",
-    });
-    const { user } = await pendingUser;
-    if (user?.uid) {
-      return toast.success("Account created. Please login");
+      const { confirmPassword, password, ...rest } = form;
+      if (confirmPassword !== password)
+        return toast.error("password do not match");
+      const pendingUser = createUserWithEmailAndPassword(
+        auth,
+        rest.email,
+        password
+      );
+      toast.promise(pendingUser, {
+        pending: "Please Wait....",
+      });
+      const { user } = await pendingUser;
+      if (user?.uid) {
+        await setDoc(doc(db, "users", user.uid), rest);
+
+        return toast.success("Account created. Please login");
+      }
+      return toast.error("Error, please try again");
+    } catch (error) {
+      toast.error(error.message);
     }
-    return toast.error("Error, please try again");
   };
 
   const inputs = [
     {
       label: "First Name",
-      fname: "name",
+      name: "fname",
       type: "text",
       placeholder: "John",
       required: true,
     },
     {
       label: "Last Name",
-      lname: "name",
+      name: "lname",
       type: "text",
       placeholder: "Cena",
       required: true,
@@ -56,14 +67,14 @@ const Signup = () => {
       label: "Password",
       name: "password",
       type: "password",
-      placeholder: "",
+      placeholder: "xxx",
       required: true,
     },
     {
       label: "Confirm Password",
       name: "confirmPassword",
       type: "password",
-      placeholder: "",
+      placeholder: "xxx",
       required: true,
     },
   ];
