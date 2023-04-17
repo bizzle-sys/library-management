@@ -12,14 +12,24 @@ const Signup = () => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
     console.log(form);
 
-    const { confirmPassword, password } = form;
+    const { confirmPassword, password, email } = form;
     if (confirmPassword !== password)
       return toast.error("password do not match");
+    const pendingUser = createUserWithEmailAndPassword(auth, email, password);
+    toast.promise(pendingUser, {
+      pending: "Please Wait....",
+    });
+    const { user } = await pendingUser;
+    if (user?.uid) {
+      return toast.success("Account created. Please login");
+    }
+    return toast.error("Error, please try again");
   };
+
   const inputs = [
     {
       label: "First Name",
