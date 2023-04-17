@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { MainLayout } from "../../Components/Layout/MainLayout";
 import { CustomInput } from "../../Components/Layout/CustomInput/CustomInput";
 import { Button, Container, Form } from "react-bootstrap";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "../../Config/Firebase-config/firebase-config";
+import { toast } from "react-toastify";
 
 const Signup = () => {
+  const [form, setForm] = useState({});
   const inputs = [
     {
       label: "First Name",
