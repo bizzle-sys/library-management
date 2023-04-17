@@ -15,6 +15,10 @@ const Signup = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     console.log(form);
+
+    const { confirmPassword, password } = form;
+    if (confirmPassword !== password)
+      return toast.error("password do not match");
   };
   const inputs = [
     {

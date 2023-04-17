@@ -3,6 +3,7 @@ import Signup from "./Pages/Signup-Signin/Signup";
 import Signin from "./Pages/Signup-Signin/Signin";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Signup-Signin/Home/Home";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="signup" element={<Signup />} />
         </Routes>
       </BrowserRouter>
+      <ToastContainer />
     </div>
   );
 }
