@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MainLayout } from "../../Components/Layout/MainLayout";
 import { CustomInput } from "../../Components/Layout/CustomInput/CustomInput";
 import { Button, Container, Form } from "react-bootstrap";
@@ -6,12 +6,20 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../../Config/Firebase-config/firebase-config";
 import { toast } from "react-toastify";
 import { doc, setDoc } from "firebase/firestore";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "./userAction";
+import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({});
+  const { user } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    user?.uid && navigate("/dashboard");
+  }, [user.uid]);
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });

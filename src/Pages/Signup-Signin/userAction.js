@@ -1,7 +1,23 @@
 import { toast } from "react-toastify";
 import { auth, db } from "../../Config/Firebase-config/firebase-config";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { setUser } from "./userSlice";
+
+export const getUserAction = (uid) => async (dispatch) => {
+  try {
+    // get user by id from firebase
+    const docSnap = await getDoc(doc(db, "users", uid));
+
+    // dispatch user to the redux
+    if (docSnap.exists()) {
+      const user = { ...docSnap.data(), uid };
+      dispatch(setUser(user));
+    }
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
 
 // create new user
 export const loginUser = (data) => async (dispatch) => {
@@ -18,7 +34,7 @@ export const loginUser = (data) => async (dispatch) => {
     const { user } = await pendingUser;
 
     if (user.uid) {
-      // get user info and mount into redux
+      dispatch(getUserAction(user.uid));
     }
   } catch (error) {
     toast.error(error.message);

@@ -24,3 +24,22 @@ body {
 .nav-link {
   color: white;
 }
+.user-layout {
+  display: flex;
+}
+.left {
+  color: white;
+  width: 30%;
+  min-width: 200px;
+  position: fixed;
+  height: 100%;
+}
+.right {
+  background: white;
+  width: 70%;
+  margin-left: 30%;
+}
+.sidebar li {
+  list-style: none;
+  line-height: 3rem;
+}
