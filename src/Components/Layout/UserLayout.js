@@ -11,41 +11,32 @@ export const UserLayout = ({ children }) => {
         <hr />
         <div className="sidebar  fw-bolder ">
           <ul>
+            <li>
+              <Link className="nav-link" to="/dashboard">
+                Dashboard
+              </Link>
+            </li>
             {/* for admin only */}
             <li>
-              {" "}
               <Link className="nav-link" to="/books">
-                {" "}
-                Books{" "}
+                Books
               </Link>
             </li>
             <li>
-              {" "}
               <Link className="nav-link" to="/clients">
-                {" "}
                 Clients
               </Link>
             </li>
 
             {/* for all user type */}
+
             <li>
-              {" "}
-              <Link className="nav-link" to="/dashboard">
-                {" "}
-                Dashboard
-              </Link>
-            </li>
-            <li>
-              {" "}
               <Link className="nav-link" to="/history">
-                {" "}
                 History
               </Link>
             </li>
             <li>
-              {" "}
               <Link className="nav-link" to="/profile">
-                {" "}
                 Profile
               </Link>
             </li>

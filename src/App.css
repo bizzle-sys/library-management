@@ -29,15 +29,14 @@ body {
 }
 .left {
   color: white;
-  width: 30%;
   min-width: 200px;
   position: fixed;
   height: 100%;
 }
 .right {
   background: white;
-  width: 70%;
-  margin-left: 30%;
+  width: calc(100% - 200px);
+  margin-left: auto;
 }
 .sidebar li {
   list-style: none;

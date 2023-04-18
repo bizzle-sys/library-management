@@ -9,6 +9,11 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { getUserAction } from "./Pages/Signup-Signin/userAction";
 import { auth } from "./Config/Firebase-config/firebase-config";
+import { Books } from "./Pages/book/Books";
+import { NewBooks } from "./Pages/book/NewBook";
+import { Profile } from "./Pages/Signup-Signin/Profile";
+import { History } from "./Pages/history/History";
+import { Clients } from "./Pages/clients/Clients";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +33,11 @@ function App() {
           <Route path="signin" element={<Signin />} />
           <Route path="signup" element={<Signup />} />
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="books" element={<Books />} />
+          <Route path="new-book" element={<NewBooks />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="history" element={<History />} />
+          <Route path="clients" element={<Clients />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />
