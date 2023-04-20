@@ -2,7 +2,7 @@ import "./App.css";
 import Signup from "./Pages/Signup-Signin/Signup";
 import Signin from "./Pages/Signup-Signin/Signin";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./Pages/Signup-Signin/Home/Home";
+import Home from "./Pages/Home/Home";
 import { ToastContainer, toast } from "react-toastify";
 import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import { onAuthStateChanged } from "firebase/auth";
@@ -33,14 +33,7 @@ function App() {
 
           <Route path="signin" element={<Signin />} />
           <Route path="signup" element={<Signup />} />
-          <Route
-            path="dashboard"
-            element={
-              <PrivateRoute>
-                <Dashboard />
-              </PrivateRoute>
-            }
-          />
+          <Route path="dashboard" element={<Dashboard />} />
           <Route path="books" element={<Books />} />
           <Route path="new-book" element={<NewBooks />} />
           <Route path="profile" element={<Profile />} />

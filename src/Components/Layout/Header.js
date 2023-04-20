@@ -8,13 +8,13 @@ import { BiLogOut } from "react-icons/bi";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Config/Firebase-config/firebase-config";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
+  const { user } = useSelector((state) => state.user);
   const handleOnLogout = () => {
     signOut(auth)
-      .then(() => {
-        toast.success("logout successfuly");
-      })
+      .then(() => {})
       .catch((error) => toast.error(error.message));
   };
   return (
@@ -32,7 +32,7 @@ export const Header = () => {
             <Link className="nav-link" to="/signup">
               <GiArchiveRegister className="fs-1" /> Sign Up
             </Link>
-            <Link className="nav-link" to="#" onClick={handleOnLogout}>
+            <Link to="#" className="nav-link" onClick={handleOnLogout}>
               <BiLogOut className="fs-1" /> Sign Out
             </Link>
           </Nav>
