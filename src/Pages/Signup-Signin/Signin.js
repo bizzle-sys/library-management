@@ -19,7 +19,7 @@ const Signin = () => {
 
   useEffect(() => {
     user?.uid && navigate("/dashboard");
-  }, [user.uid]);
+  }, [user?.uid, navigate]);
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });

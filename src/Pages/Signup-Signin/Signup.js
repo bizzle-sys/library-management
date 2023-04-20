@@ -6,8 +6,10 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../../Config/Firebase-config/firebase-config";
 import { toast } from "react-toastify";
 import { doc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({});
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -33,7 +35,9 @@ const Signup = () => {
       if (user?.uid) {
         await setDoc(doc(db, "users", user.uid), rest);
 
-        return toast.success("Account created. Please login");
+        return (
+          toast.success("Account created. Please login") && navigate("/signin")
+        );
       }
       return toast.error("Error, please try again");
     } catch (error) {

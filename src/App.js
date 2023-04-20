@@ -14,6 +14,7 @@ import { NewBooks } from "./Pages/book/NewBook";
 import { Profile } from "./Pages/Signup-Signin/Profile";
 import { History } from "./Pages/history/History";
 import { Clients } from "./Pages/clients/Clients";
+import { PrivateRoute } from "./Components/private-route/PrivateRoute";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +33,14 @@ function App() {
 
           <Route path="signin" element={<Signin />} />
           <Route path="signup" element={<Signup />} />
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route
+            path="dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
           <Route path="books" element={<Books />} />
           <Route path="new-book" element={<NewBooks />} />
           <Route path="profile" element={<Profile />} />

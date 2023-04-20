@@ -4,7 +4,19 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { GiArchiveRegister } from "react-icons/gi";
 import { SlLogin } from "react-icons/sl";
+import { BiLogOut } from "react-icons/bi";
+import { signOut } from "firebase/auth";
+import { auth } from "../../Config/Firebase-config/firebase-config";
+import { toast } from "react-toastify";
+
 export const Header = () => {
+  const handleOnLogout = () => {
+    signOut(auth)
+      .then(() => {
+        toast.success("logout successfuly");
+      })
+      .catch((error) => toast.error(error.message));
+  };
   return (
     <Navbar bg="dark" variant="dark" expand="md">
       <Container>
@@ -19,6 +31,9 @@ export const Header = () => {
             </Link>
             <Link className="nav-link" to="/signup">
               <GiArchiveRegister className="fs-1" /> Sign Up
+            </Link>
+            <Link className="nav-link" to="#" onClick={handleOnLogout}>
+              <BiLogOut className="fs-1" /> Sign Out
             </Link>
           </Nav>
         </Navbar.Collapse>

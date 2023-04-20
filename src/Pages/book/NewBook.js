@@ -56,7 +56,7 @@ export const NewBooks = () => {
       name: "summary",
       type: "text",
       as: "textarea",
-      rows: "5",
+      rows: 5,
       required: true,
     },
   ];
