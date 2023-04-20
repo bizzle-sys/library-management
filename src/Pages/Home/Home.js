@@ -27,7 +27,7 @@ const Home = () => {
               <div>{display.length} Books Found!</div>
             </div>
             <hr />
-            <div className="d-flex justify-content-between flex-wrap gap-2">
+            <div className="d-flex justify-content-between flex-wrap mb-3 gap-2">
               {display.map((item) => (
                 <CustomCard key={item.id} {...item} />
               ))}

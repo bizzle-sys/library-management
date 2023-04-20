@@ -1,5 +1,5 @@
 :root {
-  --mainBg: rgba(79, 89, 224, 0.697);
+  --mainBg: #e1dede;
 }
 body {
   background: var(--mainBg);
@@ -7,15 +7,7 @@ body {
 .main {
   min-height: 80vh;
 }
-.navbar-brand {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: var(--mainBg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 .navbar-brand a {
   text-decoration: none;
   color: white;
