@@ -7,7 +7,7 @@ export const CustomCard = ({ name, year, title, id, url, rating }) => {
   return (
     <Link to={`/book/${id}`}>
       <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src={url} />
+        <Card.Img variant="top" style={{ height: "20rem" }} src={url} />
         <Card.Body>
           <Card.Title className="fw-bold">{title}</Card.Title>
           <Card.Text>

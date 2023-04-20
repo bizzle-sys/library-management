@@ -4,6 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { CustomCard } from "../../Components/custom-card/CustomCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBooksActions } from "../book/BookAction";
+import { HomeCarousel } from "../../Components/carousel/HomeCarousel";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,8 @@ const Home = () => {
 
   return (
     <MainLayout>
+      <HomeCarousel />
+
       <Container className="mt-4">
         <Row>
           <Col>
