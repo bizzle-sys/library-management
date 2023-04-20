@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     !display.length && dispatch(getAllBooksActions());
     setDisplay(book);
-  }, [dispatch, book]);
+  }, [dispatch, book, display]);
 
   return (
     <MainLayout>

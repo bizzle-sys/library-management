@@ -8,13 +8,20 @@ import { BiLogOut } from "react-icons/bi";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Config/Firebase-config/firebase-config";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../../Pages/Signup-Signin/userSlice";
 
 export const Header = () => {
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
   const handleOnLogout = () => {
     signOut(auth)
-      .then(() => {})
+      .then(() => {
+        toast.success("Successfully Logged Out", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+        dispatch(setUser({}));
+      })
       .catch((error) => toast.error(error.message));
   };
   return (
