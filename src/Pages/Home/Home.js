@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MainLayout } from "../../Components/Layout/MainLayout";
 import { Col, Container, Row } from "react-bootstrap";
 import { CustomCard } from "../../Components/custom-card/CustomCard";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBooksActions } from "../book/BookAction";
 
 const Home = () => {
+  const dispatch = useDispatch();
   const [display, setDisplay] = useState([]);
+  const { book } = useSelector((state) => state.book);
+  useEffect(() => {
+    !display.length && dispatch(getAllBooksActions());
+    setDisplay(book);
+  }, [dispatch, book]);
+
   return (
     <MainLayout>
       <Container className="mt-4">

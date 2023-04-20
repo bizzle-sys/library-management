@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import { PrivateRoute } from "../../Components/private-route/PrivateRoute";
 import { UserLayout } from "../../Components/Layout/UserLayout";
 import { Link } from "react-router-dom";
-import { MainLayout } from "../../Components/Layout/MainLayout";
 import { CustomInput } from "../../Components/Layout/CustomInput/CustomInput";
 import { Button, Container, Form } from "react-bootstrap";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "../../Config/Firebase-config/firebase-config";
-import { toast } from "react-toastify";
-import { doc, setDoc } from "firebase/firestore";
+import { addNewBookAction } from "./BookAction";
+import { useDispatch } from "react-redux";
 
 export const NewBooks = () => {
+  const dispatch = useDispatch();
+
   const [form, setForm] = useState({});
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -18,6 +17,7 @@ export const NewBooks = () => {
   };
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+    dispatch(addNewBookAction(form));
     console.log(form);
   };
 
