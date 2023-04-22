@@ -5,6 +5,7 @@ import { CustomCard } from "../../Components/custom-card/CustomCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBooksActions } from "../book/BookAction";
 import { HomeCarousel } from "../../Components/carousel/HomeCarousel";
+import { CustomInput } from "../../Components/Layout/CustomInput/CustomInput";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,15 @@ const Home = () => {
   useEffect(() => {
     !display.length && dispatch(getAllBooksActions());
     setDisplay(book);
-  }, [dispatch, book, display]);
+  }, [dispatch, book]);
+  const handleOnChange = (e) => {
+    const { value } = e.target;
+
+    const filteredItem = book.filter((item) =>
+      item.title.toLowerCase().includes(value.toLowerCase())
+    );
+    setDisplay(filteredItem);
+  };
 
   // create local display state and assigning book to it initially
 
@@ -30,9 +39,13 @@ const Home = () => {
         <Row>
           <Col>
             <h1>This is Our Library</h1>
-            <input type="text" />
             <div className="d-flex justify-content-between mt-5">
               <div>{display.length} Books Found!</div>
+              <CustomInput
+                placeholder="Search Book"
+                className=""
+                onChange={handleOnChange}
+              />
             </div>
             <hr />
             <div className="d-flex justify-content-between flex-wrap mb-3 gap-2">

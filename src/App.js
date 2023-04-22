@@ -15,6 +15,7 @@ import { Profile } from "./Pages/Signup-Signin/Profile";
 import { History } from "./Pages/history/History";
 import { Clients } from "./Pages/clients/Clients";
 import { PrivateRoute } from "./Components/private-route/PrivateRoute";
+import BookLanding from "./Pages/book/BookLanding";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/book/:title" element={<BookLanding />} />
 
           <Route path="signin" element={<Signin />} />
           <Route path="signup" element={<Signup />} />
