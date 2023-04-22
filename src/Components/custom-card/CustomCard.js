@@ -5,7 +5,7 @@ import { Rating } from "../rating/Rating";
 
 export const CustomCard = ({ name, year, title, id, url, rating }) => {
   return (
-    <Link to={`/book/${title}`} className="nav-link text-dark">
+    <Link to={`/book/${id}`} className="nav-link text-dark">
       <Card style={{ width: "18rem" }}>
         <Card.Img variant="top" style={{ height: "20rem" }} src={url} />
         <Card.Body>

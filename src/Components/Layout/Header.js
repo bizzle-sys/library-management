@@ -33,14 +33,18 @@ export const Header = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto ">
-            <Link className="nav-link" to="/signin">
-              <SlLogin className="fs-1" /> Sign In
-            </Link>
+            {user?.uid ? (
+              <Link to="#" className="nav-link" onClick={handleOnLogout}>
+                <BiLogOut className="fs-1" /> Sign Out
+              </Link>
+            ) : (
+              <Link className="nav-link" to="/signin">
+                <SlLogin className="fs-1" /> Sign In
+              </Link>
+            )}
+
             <Link className="nav-link" to="/signup">
               <GiArchiveRegister className="fs-1" /> Sign Up
-            </Link>
-            <Link to="#" className="nav-link" onClick={handleOnLogout}>
-              <BiLogOut className="fs-1" /> Sign Out
             </Link>
           </Nav>
         </Navbar.Collapse>
