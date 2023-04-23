@@ -23,8 +23,16 @@ const BookLanding = () => {
   const handleOnBorrow = () => {
     if (user.uid) {
       // create borrow history table and add following
-
-      const obj = {};
+      const defaultBorrowDay = 14;
+      // const obj = {
+      //   bookId,
+      //   bookName,
+      //   userName,
+      //   userId,
+      //   borrowingAt,
+      //   returnAt,
+      //   hasreturned,
+      // };
       return;
     }
   };

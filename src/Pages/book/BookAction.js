@@ -34,7 +34,6 @@ export const addNewBookAction = (bookObj) => async (dispatch) => {
       dispatch(getAllBooksActions());
       return;
     }
-    toast.error("Unable to add book");
   } catch (error) {
     toast.error("something went wrong");
   }

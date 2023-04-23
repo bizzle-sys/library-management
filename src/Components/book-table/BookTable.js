@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBooksActions } from "../../Pages/book/BookAction";
+import { Button } from "react-bootstrap";
 
 export const BookTable = () => {
   // const dispatch = useDispatch();
@@ -10,6 +10,7 @@ export const BookTable = () => {
   // useEffect(() => {
   //   !book.length && dispatch(getAllBooksActions());
   // }, [dispatch, book]);
+
   return (
     <Table striped bordered hover size="sm">
       <thead>
@@ -36,7 +37,7 @@ export const BookTable = () => {
               </p>
               <p>{item?.summary}</p>
             </td>
-            <td>@mdo</td>
+            <td></td>
           </tr>
         ))}
       </tbody>

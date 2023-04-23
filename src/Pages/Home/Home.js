@@ -38,7 +38,7 @@ const Home = () => {
       <Container className="mt-4">
         <Row>
           <Col>
-            <h1>This is Our Library</h1>
+            <h1>Find Your Favourite Books Here!</h1>
             <div className="d-flex justify-content-between mt-5">
               <div>{display.length} Books Found!</div>
               <CustomInput
@@ -48,7 +48,7 @@ const Home = () => {
               />
             </div>
             <hr />
-            <div className="d-flex justify-content-between flex-wrap mb-3 gap-2">
+            <div className="d-flex  flex-wrap mb-3 gap-2">
               {display.map((item) => (
                 <CustomCard key={item.id} {...item} />
               ))}
