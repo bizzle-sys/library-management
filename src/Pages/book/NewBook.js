@@ -19,6 +19,7 @@ export const NewBooks = () => {
     e.preventDefault();
     dispatch(addNewBookAction(form));
     console.log(form);
+    toast.success("success");
   };
 
   const inputs = [
