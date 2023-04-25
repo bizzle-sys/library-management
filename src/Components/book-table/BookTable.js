@@ -25,7 +25,7 @@ export const BookTable = () => {
           <tr style={{ textAlign: "center" }}>
             <td>
               <img
-                style={{ width: "200px", height: "200px" }}
+                style={{ width: "200px", height: "20px" }}
                 src={item.url}
                 alt=""
               />
