@@ -60,15 +60,10 @@ export const EditBooks = () => {
   ];
   return (
     <Container>
-      <h3>Edit Book</h3>
-
-      <hr />
       <Form
         onSubmit={handleOnSubmit}
-        className="border p-5 shadow-lg rounded m-auto mb-4 bg-light"
+        className="m-auto  bg-light"
         style={{ width: "500px" }}>
-        <h3 className="text-dark fw-bolder mb-3">Add New books!</h3>
-
         <div className="mt-4">
           {inputs.map((item, i) => (
             <CustomInput key={i} {...item} onChange={handleOnChange} />
