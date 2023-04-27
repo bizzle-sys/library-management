@@ -2,14 +2,16 @@ import { useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
+import { getAllBooksActions } from "../../Pages/book/BookAction";
+import { CustomModal } from "../custom-modal/CustomModal";
 
 export const BookTable = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const { book } = useSelector((state) => state.book);
-  // useEffect(() => {
-  //   !book.length && dispatch(getAllBooksActions());
-  // }, [dispatch, book]);
+  useEffect(() => {
+    !book.length && dispatch(getAllBooksActions());
+  }, [dispatch, book]);
 
   return (
     <Table striped bordered hover size="sm">
@@ -37,7 +39,9 @@ export const BookTable = () => {
               </p>
               <p>{item?.summary}</p>
             </td>
-            <td></td>
+            <td>
+              <CustomModal />{" "}
+            </td>
           </tr>
         ))}
       </tbody>
