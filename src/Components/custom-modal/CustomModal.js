@@ -1,18 +1,19 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { setModalShow } from "../../system/SystemSlice";
 
 export const CustomModal = ({ heading, children }) => {
-  const [modalShow, setModalShow] = useState(false);
+  const dispatch = useDispatch;
+  // const [modalShow, setModalShow] = useState(false);
+  const { modalShow } = useSelector((state) => state.system);
 
   return (
     <>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        Launch vertically centered modal
-      </Button>
       <Modal
         show={modalShow}
-        onHide={() => setModalShow(false)}
+        onHide={() => dispatch(setModalShow(false))}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered>

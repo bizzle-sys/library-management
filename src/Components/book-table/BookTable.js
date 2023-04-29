@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
 import { getAllBooksActions } from "../../Pages/book/BookAction";
 import { CustomModal } from "../custom-modal/CustomModal";
 import { EditBooks } from "../edit-book/EditBook";
+import { setModalShow } from "../../system/SystemSlice";
 
 export const BookTable = () => {
   const dispatch = useDispatch();
@@ -14,10 +15,16 @@ export const BookTable = () => {
     !book.length && dispatch(getAllBooksActions());
   }, [dispatch, book]);
 
+  const [selectedBook, setSelectedBook] = useState({});
+
+  const handleOnEdit = (obj) => {
+    setSelectedBook(obj);
+    dispatch(setModalShow(true));
+  };
   return (
     <>
       <CustomModal heading="Edit Book">
-        <EditBooks />
+        <EditBooks selectedBook={selectedBook} />
       </CustomModal>
       <Table striped bordered hover size="sm">
         <thead>
@@ -45,7 +52,9 @@ export const BookTable = () => {
                 <p>{item?.summary}</p>
               </td>
               <td>
-                <CustomModal />{" "}
+                <Button onClick={() => handleOnEdit(item)} variant="warning">
+                  Edit
+                </Button>
               </td>
             </tr>
           ))}

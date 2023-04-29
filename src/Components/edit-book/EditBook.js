@@ -5,7 +5,7 @@ import { Button, Container, Form } from "react-bootstrap";
 import { addNewBookAction } from "../../Pages/book/BookAction";
 import { useDispatch } from "react-redux";
 
-export const EditBooks = () => {
+export const EditBooks = ({ selectedBook }) => {
   const dispatch = useDispatch();
 
   const [form, setForm] = useState({});
@@ -26,6 +26,7 @@ export const EditBooks = () => {
       type: "text",
       placeholder: "Clean Code",
       required: true,
+      value: selectedBook?.title,
     },
     {
       label: "Author Name",
