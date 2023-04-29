@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setModalShow } from "../../system/SystemSlice";
 
 export const CustomModal = ({ heading, children }) => {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   // const [modalShow, setModalShow] = useState(false);
   const { modalShow } = useSelector((state) => state.system);
 
